@@ -1,0 +1,48 @@
+@using PersonelKayıtSistemi.Data
+@model Personel
+
+@{
+    ViewData["Title"] = "Ekle Sayfası";
+}
+
+<h1>Personel Ekleme Formu</h1>
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Ekle" method="post">
+            <p>
+                <label for="PersonelNo">Personel No</label>
+                <input type="number" asp-for="PersonelId" id="PersonelNo" class="form-control">
+            </p>
+        
+            <p>
+                <label for="Ad">Ad</label>
+                <input type="text" asp-for="Ad" id="Ad" class="form-control">
+            </p>
+        
+            <p>
+                <label for="Soyad">Soyad</label>
+                <input type="text" asp-for="Soyad" id="Soyad" class="form-control">
+            </p>
+        
+            <p>
+                <label for="Adres">Adres</label>
+                <textarea asp-for="Adres" id="Adres" cols="30" rows="5" class="form-control"></textarea>
+            </p>
+        
+            <p>
+                <label for="Maas">Maaş</label>
+                <input type="number" asp-for="Maas" id="Maas" step="0.01" class="form-control">
+            </p>
+        
+            <p>
+                <label for="Resim">Resim</label>
+                <input type="text" asp-for="Resim" id="resim" class="form-control">
+            </p>
+        
+            <p>
+                <input type="submit" value="Kaydet" class="btn btn-primary">
+            </p>
+        </form>
+    </div>
+</div>    

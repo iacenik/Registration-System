@@ -1,0 +1,9 @@
+body{
+	background: url(../resimler/body-bg.jpg) fixed;
+    background-size: cover;
+    margin-top: 57px;
+}
+
+.bg-navbar{
+    background-color: #0a4768;
+}

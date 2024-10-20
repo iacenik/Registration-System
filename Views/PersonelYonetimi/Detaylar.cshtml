@@ -1,0 +1,32 @@
+@using PersonelKayıtSistemi.Data
+@model Personel
+@{
+    ViewData["Title"] = "Personel Detayları";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card" style="width: 18rem;">
+  @if (!string.IsNullOrEmpty(Model.Resim))
+  {
+      <img src="~/resimler/personel/@Model.Resim" class="card-img-top" alt="Personel resmi">
+  }
+  else
+  {
+      <img src="~/resimler/default.jpg" class="card-img-top" alt="Varsayılan Resim"> <!-- Varsayılan bir resim ekleyin -->
+  }
+
+  <div class="card-body">
+    <h5 class="card-title">@Model.Ad @Model.Soyad</h5>
+    <p class="card-text">
+        <strong>Personel No:</strong> @Model.PersonelId
+    </p>
+    <p class="card-text">
+        <strong>Adres:</strong> @Model.Adres
+    </p>
+    <p class="card-text">
+        <strong>Maaş:</strong> @Model.Maas
+    </p>
+    <a asp-controller="PersonelYonetimi" asp-action="Index" class="btn btn-primary">Listeye Geri Dön</a>
+  </div>
+</div>

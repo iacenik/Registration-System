@@ -1,0 +1,66 @@
+@using PersonelKayıtSistemi.Data
+@model List<Personel>
+@{
+    ViewData["Title"] = "Personel Listesi";
+}
+
+
+<h1>Personel Listesi</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Personel No</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Maaş</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonelId</td>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>@item.Maas</td>
+                <td>
+                    <a asp-controller="PersonelYonetimi" asp-action="Detaylar" asp-route-id="@item.PersonelId"
+                        class="btn btn-info"><i class="bi bi-info-circle-fill"></i> Detaylar</a>
+                    <a asp-controller="PersonelYonetimi" asp-action="Duzenle" asp-route-id="@item.PersonelId"
+                        class="btn btn-warning"><i class="bi bi-pencil-square"></i> Düzenle</a>
+                    <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#silModal@(item.PersonelId)"><i class="bi bi-trash3-fill"></i> Sil</a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="silModal@(item.PersonelId)" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Personel Silme Onayı</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        <img src="~/resimler/personel/@item.Resim" alt="Personel resmi" class="img-thumbnail">
+                                    </p>
+                                    <p>
+                                        <strong>@item.Ad @item.Soyad</strong> adlı personeli silmek istediğinize emin misiniz?
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                    <a asp-controller="PersonelYonetimi" asp-action="Sil" asp-route-id="@item.PersonelId" class="btn btn-danger">
+                                        <i class="bi bi-trash3-fill"></i> Sil
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
